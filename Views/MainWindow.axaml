@@ -1,0 +1,83 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:GimpClone.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="GimpClone.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="GimpClone">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Command="{Binding OpenCommand}"/>
+                <MenuItem Header="_Save" Command="{Binding SaveCommand}"/>
+                <Separator/>
+                <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Undo" Command="{Binding UndoCommand}"/>
+                <MenuItem Header="_Redo" Command="{Binding RedoCommand}"/>
+                <Separator/>
+                <MenuItem Header="_Negative Image" Command="{Binding NegativeImageCommand}"/>
+                <MenuItem Header="_Greyscale" Command="{Binding GreyscaleCommand}"/>
+                <MenuItem Header="_Apply" Command="{Binding ApplyCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- <StackPanel DockPanel.Dock="Left" Width="50" Background="LightGray">
+            <Button Content="✏️" ToolTip.Tip="Pencil Tool" Command="{Binding SelectPencilCommand}"/>
+            <Button Content="🪣" ToolTip.Tip="Fill Tool" Command="{Binding SelectFillCommand}"/>
+            <Button Content="⬜" ToolTip.Tip="Rectangle Tool" Command="{Binding SelectRectangleCommand}"/>
+            <Button Content="⭕" ToolTip.Tip="Circle Tool" Command="{Binding SelectCircleCommand}"/>
+        </StackPanel> -->
+
+        <StackPanel DockPanel.Dock="Right" Width="200" Background="Black">
+            <TextBlock Text="Transformations" Margin="10"/>
+            <StackPanel Margin="10">
+                <TextBlock Text="Brightness" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding #sliderBrightness.Value}" 
+              HorizontalAlignment="Center"/>
+                <Slider x:Name="sliderBrightness" Value="{Binding Brightness}" Minimum="-100" Maximum="100"/>
+            </StackPanel>
+            <StackPanel Margin="10,0">
+                <TextBlock Text="Contrast" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding #sliderContrast.Value}" 
+              HorizontalAlignment="Center"/>
+                <Slider x:Name="sliderContrast" Value="{Binding Contrast}" Minimum="0" Maximum="1"/>
+            </StackPanel>
+            <StackPanel Margin="10,0">
+                <TextBlock Text="Gamma" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding #sliderGamma.Value}" 
+              HorizontalAlignment="Center"/>
+                <Slider x:Name="sliderGamma" Value="{Binding Gamma}" Minimum="0" Maximum="10"/>
+            </StackPanel>
+            <StackPanel Margin="10,0">
+                <Button Content="_Apply" Command="{Binding ApplyCommand}" Margin="0,10,0,0"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="5">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Canvas Background="White" Width="{Binding CanvasWidth}" Height="{Binding CanvasHeight}">
+                    <!-- Add this Image control as a child of the Canvas -->
+                    <Image Source="{Binding CurrentImage}" 
+                        Width="{Binding CanvasWidth}" 
+                        Height="{Binding CanvasHeight}" 
+                        Stretch="None"
+                        Canvas.Left="0"
+                        Canvas.Top="0"/>
+                </Canvas>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+
+</Window>

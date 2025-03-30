@@ -5,7 +5,7 @@ Projekt na przedmiot przetwarzanie obrazów
 ## Użyte Technologie
 
 -   **Język Programowania:** C#
--   **Framework UI:** Avalonia (Zamist WinForms, z powodu wspracia dla MacOS)
+-   **Framework UI:** Avalonia (Zamiast WinForms, z powodu wspracia dla MacOS)
 
 ## Autor
 

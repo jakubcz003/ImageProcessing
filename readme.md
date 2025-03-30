@@ -1,3 +1,16 @@
+# Opis Projektu
+
+Projekt na przedmiot przetwarzanie obrazów
+
+## Użyte Technologie
+
+-   **Język Programowania:** C#
+-   **Framework UI:** Avalonia (MacOS i Windows)
+
+## Autor
+
+Jakub Czaja s153666
+
 | Nr  | Temat                                         | Punkty | Termin oddania | Status    |
 | --- | --------------------------------------------- | ------ | -------------- | --------- |
 | 1   | Podstawowe operacje punktowe                  | 2      | 6.04.25        | W trakcie |
